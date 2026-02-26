@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace Taller_POO.Clases
 {
-    public abstract class Empleado
-    {
-        namespace GestionEmpleados
-{
+   
     public abstract class Empleado
     {
         private int id;
@@ -66,37 +63,37 @@ namespace Taller_POO.Clases
         }
     }
 
-    public class EmpleadoPorHoras : Empleado
-    {
-        private int horasTrabajadas;
-        private decimal valorPorHora;
-
-        public EmpleadoPorHoras(int id, string nombre, int horasTrabajadas, decimal valorPorHora)
-            : base(id, nombre)
+        public class EmpleadoPorHoras : Empleado
         {
-            this.horasTrabajadas = horasTrabajadas;
-            this.valorPorHora = valorPorHora;
-        }
+            private int horasTrabajadas;
+            private decimal valorPorHora;
 
-        public override decimal CalcularSalario()
-        {
-            return horasTrabajadas * valorPorHora;
-        }
+            public EmpleadoPorHoras(int id, string nombre, int horasTrabajadas, decimal valorPorHora)
+                : base(id, nombre)
+            {
+                this.horasTrabajadas = horasTrabajadas;
+                this.valorPorHora = valorPorHora;
+            }
 
-        // Sobrecarga
-        public decimal CalcularSalario(int horasExtra)
-        {
-            return (horasTrabajadas + horasExtra) * valorPorHora;
-        }
+            public override decimal CalcularSalario()
+            {
+                return horasTrabajadas * valorPorHora;
+            }
 
-        public override void MostrarInformacion()
-        {
-            base.MostrarInformacion();
-            Console.WriteLine("Tipo: Por Horas");
-            Console.WriteLine("Salario: " + CalcularSalario());
-            Console.WriteLine("--------------------");
+            // Sobrecarga
+            public decimal CalcularSalario(int horasExtra)
+            {
+                return (horasTrabajadas + horasExtra) * valorPorHora;
+            }
+
+            public override void MostrarInformacion()
+            {
+                base.MostrarInformacion();
+                Console.WriteLine("Tipo: Por Horas");
+                Console.WriteLine("Salario: " + CalcularSalario());
+                Console.WriteLine("--------------------");
+            }
         }
-    }
 }
-    }
-}
+    
+
