@@ -8,6 +8,10 @@ namespace Taller_POO.Clases
 {
     public abstract class Empleado
     {
+        namespace GestionEmpleados
+{
+    public abstract class Empleado
+    {
         private int id;
         private string nombre;
 
@@ -36,5 +40,63 @@ namespace Taller_POO.Clases
             Console.WriteLine("ID: " + id);
             Console.WriteLine("Nombre: " + nombre);
         }
+    }
+
+    public class EmpleadoTiempoCompleto : Empleado
+    {
+        private decimal salarioFijo;
+
+        public EmpleadoTiempoCompleto(int id, string nombre, decimal salarioFijo)
+            : base(id, nombre)
+        {
+            this.salarioFijo = salarioFijo;
+        }
+
+        public override decimal CalcularSalario()
+        {
+            return salarioFijo;
+        }
+
+        public override void MostrarInformacion()
+        {
+            base.MostrarInformacion();
+            Console.WriteLine("Tipo: Tiempo Completo");
+            Console.WriteLine("Salario: " + CalcularSalario());
+            Console.WriteLine("--------------------");
+        }
+    }
+
+    public class EmpleadoPorHoras : Empleado
+    {
+        private int horasTrabajadas;
+        private decimal valorPorHora;
+
+        public EmpleadoPorHoras(int id, string nombre, int horasTrabajadas, decimal valorPorHora)
+            : base(id, nombre)
+        {
+            this.horasTrabajadas = horasTrabajadas;
+            this.valorPorHora = valorPorHora;
+        }
+
+        public override decimal CalcularSalario()
+        {
+            return horasTrabajadas * valorPorHora;
+        }
+
+        // Sobrecarga
+        public decimal CalcularSalario(int horasExtra)
+        {
+            return (horasTrabajadas + horasExtra) * valorPorHora;
+        }
+
+        public override void MostrarInformacion()
+        {
+            base.MostrarInformacion();
+            Console.WriteLine("Tipo: Por Horas");
+            Console.WriteLine("Salario: " + CalcularSalario());
+            Console.WriteLine("--------------------");
+        }
+    }
+}
     }
 }
