@@ -23,5 +23,18 @@ namespace Taller_POO.Clases
             set { nombre = value; }
         }
 
+        public Empleado(int id, string nombre)
+        {
+            this.id = id;
+            this.nombre = nombre;
+        }
+
+        public abstract decimal CalcularSalario();
+
+        public virtual void MostrarInformacion()
+        {
+            Console.WriteLine("ID: " + id);
+            Console.WriteLine("Nombre: " + nombre);
+        }
     }
 }
